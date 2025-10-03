@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+🎨 Professional Design System (HSL-based)
+- Neutral greys for backgrounds/text
+- Blues/teals for primary/accent
+- Subtle shadows & gradients for modern, clean UI
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;        /* Light background */
+    --foreground: 220 15% 15%;     /* Dark text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    --primary: 200 85% 45%;        /* Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 70% 45%;      /* Teal */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 185 75% 50%;         /* Aqua accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;      /* Red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 200 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Gradients & shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(200 85% 45%), hsl(185 75% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.85), hsl(0 0% 100% / 0.6));
+    --shadow-card: 0 4px 20px -2px hsl(220 15% 15% / 0.08);
+    --shadow-dock: 0 8px 32px -4px hsl(220 15% 15% / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 200 85% 55%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 180 70% 55%;
+    --secondary-foreground: 220 20% 8%;
+
+    --muted: 220 18% 18%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 185 75% 55%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 18%;
+    --input: 220 18% 18%;
+    --ring: 200 85% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(200 85% 55%), hsl(185 75% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 16% / 0.85), hsl(220 18% 12% / 0.6));
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    --shadow-dock: 0 8px 32px -4px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Dock hover effect */
+@layer utilities {
+  .dock-item-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .dock-item-hover:hover {
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: var(--shadow-dock);
+  }
+
+  /* Glassmorphic cards */
+  .glassmorphic {
+    backdrop-filter: blur(16px) saturate(180%);
+    background: hsl(var(--card) / 0.75);
+    border: 1px solid hsl(var(--border) / 0.4);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  /* Gradient text for headings */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
