@@ -9,11 +9,13 @@ import ProjectsPage from "./pages/ProjectsPage";
 import PublicationsPage from "./pages/PublicationsPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import { Analytics } from '@vercel/analytics/vue';
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <Analytics/>
     <TooltipProvider>
       <Toaster />
       <Sonner />
